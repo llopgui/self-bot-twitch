@@ -22,7 +22,8 @@ Bot automático para Twitch que envía chistes malos sobre Plutón y responde co
 
 ### 🛠️ **Características Técnicas**
 
-- 🔄 Completamente automático (sin comandos)
+- 🔄 **Completamente automático** - NO tiene comandos, solo respuestas automáticas
+- 🤖 **Filtrado inteligente de bots** - Ignora automáticamente otros bots comunes (StreamElements, Streamlabs, Nightbot, etc.)
 - 📝 Sistema de logging robusto con soporte UTF-8
 - 🌐 Configuración simple mediante archivo `.env`
 - 🐛 Manejo de errores y reconexión automática
@@ -84,6 +85,9 @@ TWITCH_CHANNEL=nombre_del_canal
 
 # Intervalo entre chistes (segundos, mínimo 30)
 MESSAGE_INTERVAL=100
+
+# Bots adicionales a ignorar (opcional)
+IGNORED_BOTS=mi_bot_personalizado,otro_bot
 ```
 
 ## 🎯 Obtener Token OAuth
@@ -101,7 +105,7 @@ MESSAGE_INTERVAL=100
 
 > "Plutón en terapia: 'Doctora, siento que ya no importo' 💔"
 
-### �� **Factos Científicos**
+### 🧠 **Factos Científicos**
 >
 > "FACTO 🧠: Plutón es más pequeño que nuestra Luna. ¡Incluso 7 lunas son más grandes!"
 
@@ -231,3 +235,51 @@ Este proyecto está bajo la licencia [CC BY-NC-SA 4.0](https://creativecommons.o
 *Mantengamos la ciencia correcta, un chiste a la vez* 🚀
 
 </div>
+
+## 🤖 Filtrado de Bots
+
+El bot incluye **filtrado inteligente** que evita responder a otros bots comunes de Twitch, previniendo spam y bucles infinitos.
+
+### 🔧 **Bots Ignorados Automáticamente**
+
+El bot ignora por defecto estos bots populares:
+
+- **StreamElements**: streamelements, streamelementsonline
+- **Streamlabs**: streamlabs, streamlabsbot
+- **Nightbot**: nightbot, nightbot2
+- **Moobot**: moobot, moo_bot
+- **Otros**: fossabot, wizebot, coebot, y muchos más...
+
+### ➕ **Añadir Bots Personalizados**
+
+Para ignorar bots adicionales, añade al archivo `.env`:
+
+```env
+# Separar múltiples bots con comas
+IGNORED_BOTS=mi_bot_personalizado,otro_bot,bot_especial
+```
+
+### 📊 **Verificar Bots Ignorados**
+
+El bot registra en los logs cuántos bots está ignorando:
+
+```
+INFO - Bots ignorados: 45
+DEBUG - Lista de bots ignorados: ['streamelements', 'nightbot', ...]
+
+```
+
+## ⚠️ **Importante: Sin Comandos**
+
+Este bot **NO tiene comandos**. Es completamente automático y funciona mediante:
+
+- ✅ **Chistes automáticos** cada X segundos configurables
+- ✅ **Respuestas automáticas** cuando detecta menciones de "Plutón"
+- ✅ **Filtrado automático** de otros bots
+- ❌ **NO responde a !comandos** - No es un bot tradicional de chat
+
+Si buscas un bot con comandos (!hola, !clima, etc.), este no es el bot que necesitas.
+
+---
+
+## �� Filtrado de Bots
